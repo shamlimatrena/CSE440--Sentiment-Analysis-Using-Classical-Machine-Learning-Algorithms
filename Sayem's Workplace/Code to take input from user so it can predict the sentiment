@@ -1,0 +1,41 @@
+# Function to preprocess the user input
+def preprocess_input(text, stopwords):
+    """
+    Preprocess the user input for sentiment prediction.
+
+    Args:
+        text: str, the raw input text.
+        stopwords: list of stopwords to remove.
+
+    Returns:
+        cleaned_text: str, the processed and cleaned input text.
+    """
+    text = re.sub(r'[^\w\s]', '', text)  # Remove punctuation
+    text = text.lower()  # Convert to lowercase
+    text = " ".join([word for word in text.split() if word not in stopwords])  # Remove stopwords
+    return text
+
+# Function to predict sentiment of a single input
+def predict_sentiment(user_input, model, vectorizer, stopwords):
+    """
+    Predicts sentiment of the user-provided input text.
+
+    Args:
+        user_input: str, the input text.
+        model: the trained sentiment analysis model.
+        vectorizer: TfidfVectorizer or similar object used during training.
+        stopwords: list of stopwords to preprocess the input.
+
+    Returns:
+        Sentiment label: str, predicted sentiment class.
+    """
+    cleaned_input = preprocess_input(user_input, stopwords)
+    vectorized_input = vectorizer.transform([cleaned_input])  # Vectorize the input text
+    prediction = model.predict(vectorized_input)  # Predict sentiment
+    return prediction[0]
+
+# User interaction block
+print("\n--- Sentiment Prediction ---")
+user_input = input("Enter a sentence to predict its sentiment: ")
+predicted_sentiment = predict_sentiment(user_input, lr_model, tfidf_vectorizer, stopwords)
+print(f"Predicted Sentiment: {predicted_sentiment}")
