@@ -6,10 +6,6 @@
 - We will run different classical ML models on the dataset to determine sentiment analysis
 - We will evaluate their performance on sentiment classification tasks
 
-## Google Colab File
-
-- This is the collab file of our project: https://drive.google.com/drive/u/0/folders/1GtifTHqqhEtSBr4E_0I19CtDeD8MLuye
-
 ## How to run the Project 
 - Download the drive folder from here: https://drive.google.com/drive/folders/1GtifTHqqhEtSBr4E_0I19CtDeD8MLuye?usp=sharing
 - Upload the folder in your Google Drive
